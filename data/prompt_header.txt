@@ -1,0 +1,33 @@
+We're studying neurons in a neural network. This neural network plays a 20-round two-player game where it can either cooporate (C) or defect (D). If the two players cooperate then they each score -1, if one cooporate and the other defects the defecting player scores 0, while the cooperating player scores -3. If both player defect they both score -2. Each play tries to maximize their score. Below, you are given the expected inputs that cause the neuron to fire. These expected inputs characterize the behavior of the neuron. The activation format is "type<tab>input<tab>value". The expected type is either B for values between 0-1 or R for any numerical value greater than 0. The value represents the average value of this input required for the neuron to activate. Using this information, generate a description for why this neuron fires. 
+
+niceness: the neuron will not defect unless its opponent does
+retaliating: cares about if the opponent defects in the previous round
+forgiveness: though the neuron will retaliate they will cooperate if opponent does not defect
+non-envious: the neuron does not care if the opponent has a higher score
+
+For example:
+Neuron 1
+<start>
+B	Opponent's first move is C	0
+B	Opponent's first move is D	0
+B	Opponent's second move is C	0
+B	Opponent's second move is D	0
+B	Player's previous move is C	1
+B	Player's previous move is D	1
+B	Player's second previous move is C	0
+B	Player's second previous move is D	0
+B	Opponent's previous move is C	0
+B	Opponent's previous move is D	1
+B	Opponent's second previous move is C	0
+B	Opponent's second previous move is D	0
+R	Total opponent cooperations	20
+R	Total opponent defections	0
+R	Total player cooperations	0
+R	Total player defections	0
+R	Round number	0
+<end>
+Let's think step by step:
+1. the neuron looks at whether the opponent has defected in the last round, this may suggest that it is reliating.
+2. since it does not look at the total opponent defections or previous defection move, it is forgiving and non-envious
+3. since the neuron pays attention to its own previous moves, it is mindful of its own actions
+Conclusion: this neuron figures out when to retaliate against its opponent, but forgives the opponent afterwards
