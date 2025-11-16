@@ -58,6 +58,15 @@ python3 generate_gpt_prompt.py data/prompt_header.txt data/wa-10-Tit_For_Tat.pkl
 python3 query.py gpt-4 data/prompt-10-Tit_For_Tat.json results/explained-10-Tit_For_Tat.json
 ```
 
+### Research Documentation
+```bash
+# IMPORTANT: Commit research analysis files immediately after creation
+git add research-gaps-and-next-steps.txt && git commit -m "add research analysis"
+
+# Local commits preserve work without pushing to remote
+git add . && git commit -m "descriptive message"
+```
+
 ### Python Modules
 - `ann_recorder.py`: Core module - records neuron activations during gameplay
 - `generate_gpt_prompt.py`: Converts activation data into GPT prompts
